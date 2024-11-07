@@ -12,24 +12,30 @@ import java.util.List;
 
 @Repository
 public class CarDaoImp implements CarDao {
+    private String HQL = "from Car car where car.model = :model";
 
-    @Autowired
+
     private SessionFactory sessionFactory;
 
+    @Autowired
+    public CarDaoImp(SessionFactory sessionFactory) {
+        this.sessionFactory = sessionFactory;
+    }
+
+
+
     @Override
-    public void add(Car car) {
+    public void addCar(Car car) {
         sessionFactory.getCurrentSession().save(car);
     }
 
     @Override
-    public List<Car> listCars() {
+    public List<Car> getListCars() {
         TypedQuery<Car> query = sessionFactory.getCurrentSession().createQuery("from Car");
         return query.getResultList();
     }
 
-    @Override
     public Car getCar(String model) {
-        String HQL = "from Car car where car.model = :model";
         return sessionFactory.getCurrentSession().createQuery(HQL, Car.class).setParameter("model", model).getSingleResult();
     }
 }
