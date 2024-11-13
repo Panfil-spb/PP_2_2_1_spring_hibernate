@@ -13,7 +13,7 @@ import java.util.List;
 @Repository
 public class UserDaoImp implements UserDao {
 
-
+    private static final String HQL = "from User user where user.car.model = :model and user.car.series = :series";
     private SessionFactory sessionFactory;
 
     @Autowired
@@ -36,7 +36,7 @@ public class UserDaoImp implements UserDao {
 
     @Override
     public User getUser(String model, int series) {
-        String HQL = "from User user where user.car.model = :model and user.car.series = :series";
+
         return sessionFactory.getCurrentSession().createQuery(HQL, User.class).setParameter("model", model).setParameter("series", series).getSingleResult();
     }
 }

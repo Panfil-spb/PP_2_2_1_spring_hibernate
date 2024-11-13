@@ -12,7 +12,7 @@ import java.util.List;
 
 @Repository
 public class CarDaoImp implements CarDao {
-    private String HQL = "from Car car where car.model = :model";
+    private static final String HQL = "from Car car where car.model = :model";
 
 
     private SessionFactory sessionFactory;

@@ -11,7 +11,7 @@ import java.util.List;
 public class CarServiceImp implements CarService{
 
 
-    public CarDaoImp carDaoImp;
+    private CarDaoImp carDaoImp;
 
     @Autowired
     public CarServiceImp(CarDaoImp carDaoImp) {
