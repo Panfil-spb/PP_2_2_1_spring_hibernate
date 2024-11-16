@@ -19,7 +19,7 @@ public class CarServiceImp implements CarService{
     }
 
     @Override
-    public void add(Car car) {
+    public void addCar(Car car) {
         carDaoImp.addCar(car);
     }
 
